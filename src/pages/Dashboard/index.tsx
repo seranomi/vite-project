@@ -3,6 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 export default function Dashboard() {
   return (
     <div>
+      <button className="btn">Default</button>
       <h1>대시보드</h1>
       <nav>
         <Link to="profile">프로필</Link>

@@ -1,25 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Dashboard/Profile";
-import Settings from "./pages/Dashboard/Settings";
-import Navbar from "./components/Navbar";
+import MainLayout from "@/layouts/MainLayout";
+import Home from "@/pages/Home";
+import About from "@/pages/About";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />{" "}
-        <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" index element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;
