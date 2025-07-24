@@ -4,7 +4,6 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Signup from "@/pages/Signup";
 import Signin from "@/pages/Signin";
-import "./app.css"
 
 export default function App() {
   return (
