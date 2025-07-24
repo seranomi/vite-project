@@ -5,12 +5,7 @@ type ButtonProps = {
 
 const Button = ({ children, onClick }: ButtonProps) => {
   return (
-    <button
-      className="inline-flex border py-2 px-4 text-sm rounded-full"
-      onClick={onClick}
-    >
-      {children}
-    </button>
+    <button className="btn btn-primary" onClick={onClick}>{children}</button>
   );
 };
 

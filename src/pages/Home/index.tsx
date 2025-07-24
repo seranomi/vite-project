@@ -1,169 +1,20 @@
 import { useState } from "react";
-import reactLogo from "../../assets/react.svg";
-import viteLogo from "/vite.svg";
-import Button from "../../components/button.tsx";
+import Button from "@/components/Button.tsx";
 export { Button };
 
 export default function Home() {
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <div className="bg-green-400 w-48 h48"></div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div><div className="card">
-        <button onClick={() => setCount1((count) => count + 1)}>
-          count is {count1}
-        </button>
-        <Button onClick={() => setCount2((count) => count + 1)}>
-          count is {count2}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <Button onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </Button>
+      <div className="bg-base-100 text-base-content p-6 space-y-4">
+        <h2 className="text-2xl font-bold">🧪 테마 테스트</h2>
+        <button className="btn btn-primary">Primary</button>
+        <button className="btn btn-secondary">Secondary</button>
+        <div className="bg-base-200 p-4 rounded">Background box</div>
       </div>
     </>
   );
