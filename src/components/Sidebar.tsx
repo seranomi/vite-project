@@ -2,9 +2,14 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
-    <ul className="menu p-4">
-      <li><Link to="/">🏠 Home</Link></li>
-      <li><Link to="/about">ℹ️ About</Link></li>
+    <div>
+    <ul className="menu p-5 w-full">
+      <li className="text-2xl font-bold justify-center"><p>메뉴</p></li>
+      <li></li>
+      <li><Link to="/"><p className="text-lg font-bold">🏠 Home</p></Link></li>
+      <li><Link to="/about"><p className="text-lg font-bold">ℹ️ 언리얼 엔진</p></Link></li>
+      <li><Link to="/exhibitions"><p className="text-lg font-bold">전시관</p></Link></li>
     </ul>
+    </div>
   );
 }

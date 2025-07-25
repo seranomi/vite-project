@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Signup() {
   return (
-    <div className="min-h-[calc(100vh-10rem)] flex items-center justify-center">
+    <div className="min-h-[calc(100vh-10rem)] flex items-center justify-center animate-fade-in">
       <div className="card w-full max-w-sm bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="text-2xl font-bold text-center">회원가입</h2>

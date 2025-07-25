@@ -10,12 +10,12 @@ export default function AuthNavbar() {
       </div>
 
       {/* 링크 및 토글 - 데스크탑 전용 */}
-      <div className="flex items-center gap-2">
+      <div className="lg:flex items-center gap-2">
         <Link className="btn btn-ghost btn-sm" to="/signup">
-          회원가입
+          <p className="text-base">회원가입</p>
         </Link>
         <Link className="btn btn-ghost btn-sm" to="/signin">
-          로그인
+          <p className="text-base">로그인</p>
         </Link>
         <ThemeToggle />
       </div>

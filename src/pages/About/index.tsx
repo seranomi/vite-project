@@ -8,7 +8,7 @@ export default function About() {
   };
 
   return (
-    <div>
+    <div className="animate-fade-in">
       <h1 className="text-2xl font-bold mb-4">가상 전시관</h1>
 
       {/* 로딩 메시지 */}

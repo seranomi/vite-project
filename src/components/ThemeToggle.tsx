@@ -13,7 +13,7 @@ export default function ThemeToggle() {
 
   return (
     <>
-      <label className="swap swap-rotate">
+      <label className="swap swap-rotate px-3">
         {/* this hidden checkbox controls the state */}
         <input onClick={toggleTheme} type="checkbox" className="theme-controller" value="synthwave" />
 

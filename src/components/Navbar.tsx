@@ -15,10 +15,19 @@ export default function Navbar({ onDrawerToggle }: NavbarProps) {
           className="btn btn-square btn-ghost"
           aria-label="Open drawer"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
       </div>
@@ -29,9 +38,13 @@ export default function Navbar({ onDrawerToggle }: NavbarProps) {
       </div>
 
       {/* 링크 및 토글 - 데스크탑 전용 */}
-      <div className="hidden lg:flex items-center gap-2">
-        <Link className="btn btn-ghost btn-sm" to="/signup">회원가입</Link>
-        <Link className="btn btn-ghost btn-sm" to="/signin">로그인</Link>
+      <div className="lg:flex items-center gap-2">
+        <Link className="btn btn-ghost btn-sm" to="/signup">
+          <p className="text-base">회원가입</p>
+        </Link>
+        <Link className="btn btn-ghost btn-sm" to="/signin">
+          <p className="text-base">로그인</p>
+        </Link>
         <ThemeToggle />
       </div>
     </div>
