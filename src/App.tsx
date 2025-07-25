@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Signup from "@/pages/Signup";
 import Signin from "@/pages/Signin";
+import AuthLayout from "./layouts/AuthLayout";
 
 export default function App() {
   return (
@@ -12,8 +13,11 @@ export default function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/about" index element={<About />} />
-          <Route path="/signup" index element={<Signup />} />
-          <Route path="/signin" index element={<Signin />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="signin" element={<Signin />} />
+          <Route path="signup" element={<Signup />} />
         </Route>
       </Routes>
     </BrowserRouter>

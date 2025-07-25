@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export default function MainLayout() {
   return (
-    <div className="grid grid-cols-[16rem_1fr] grid-rows-[3.5rem_1fr] min-h-screen max-h-screen overflow-hidden">
+    <div className="grid grid-cols-[16rem_1fr] grid-rows-[4rem_1fr] min-h-screen max-h-screen overflow-hidden">
       {/* 상단바 */}
       <header className="col-span-2 bg-base-100  flex items-center">
         <Navbar />

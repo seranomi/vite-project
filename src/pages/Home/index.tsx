@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "@/components/Button.tsx";
-export { Button };
 
 export default function Home() {
   const [count, setCount] = useState(0);

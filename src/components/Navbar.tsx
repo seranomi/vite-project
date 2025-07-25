@@ -21,11 +21,13 @@ export default function Navbar() {
       </div>
 
       {/* 네비게이션 및 테마 토글 */}
-      <div className="flex-none space-x-2 hidden lg:flex">
+      <div className="flex-none space-x-2 lg:flex items-center">
         <Link className="btn btn-ghost btn-sm" to="/signup">회원가입</Link>
         <Link className="btn btn-ghost btn-sm" to="/signin">로그인</Link>
         <ThemeToggle />
       </div>
+
+      
     </div>
   );
 }
