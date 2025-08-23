@@ -9,6 +9,7 @@ export default function Sidebar() {
       <li><Link to="/"><p className="text-lg font-bold">🏠 Home</p></Link></li>
       <li><Link to="/about"><p className="text-lg font-bold">ℹ️ 언리얼 엔진</p></Link></li>
       <li><Link to="/exhibitions"><p className="text-lg font-bold">전시관</p></Link></li>
+      <li><Link to="/exhibitions/new"><p className="text-lg font-bold">전시관 등록</p></Link></li>
     </ul>
     </div>
   );

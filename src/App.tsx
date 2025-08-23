@@ -5,6 +5,7 @@ import About from "@/pages/About";
 import Signup from "@/pages/Signup";
 import Signin from "@/pages/Signin";
 import AuthLayout from "./layouts/AuthLayout";
+import ExhibitionCreatePage from "./pages/ExhibitionCreatePase.tsx";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/about" index element={<About />} />
+          <Route path="/exhibitions/new" index element={<ExhibitionCreatePage />} />
         </Route>
 
         <Route element={<AuthLayout />}>
