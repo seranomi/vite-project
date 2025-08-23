@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function About() {
+export default function Exhibitions() {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoad = () => {

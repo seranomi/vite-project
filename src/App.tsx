@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 import Home from "@/pages/Home";
-import About from "@/pages/About";
+import About from "@/pages/Exhibitions/index.tsx";
 import Signup from "@/pages/Signup";
 import Signin from "@/pages/Signin";
 import AuthLayout from "./layouts/AuthLayout";
-import ExhibitionCreatePage from "./pages/ExhibitionCreatePase.tsx";
+import ExhibitionCreatePage from "./pages/ArtworkCreatePase.tsx/index.tsx";
+import MyArtwork from "./pages/MyArtwork/index.tsx";
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="/about" index element={<About />} />
+          <Route path="/exhibitions" index element={<About />} />
+          <Route path="/my-artworks" index element={<MyArtwork />} />
           <Route path="/exhibitions/new" index element={<ExhibitionCreatePage />} />
         </Route>
 
