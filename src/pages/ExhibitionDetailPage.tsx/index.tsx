@@ -65,13 +65,20 @@ export function MyExhibitionsPage() {
       setLoading(true);
       setError("");
       try {
-        const res = await axios.get<Exhibition[]>(`${API_BASE}/exhibitions/my`, {
-          headers: authHeaders(),
-        });
+        const res = await axios.get<Exhibition[]>(
+          `${API_BASE}/exhibitions/my`,
+          {
+            headers: authHeaders(),
+          }
+        );
         // id는 문자열로 정규화 (DnD 등 비교 안정화)
         setList((res.data ?? []).map((e) => ({ ...e, id: String(e.id) })));
       } catch (e: any) {
-        setError(e?.response?.data?.message || e?.message || "전시 목록을 불러오지 못했습니다.");
+        setError(
+          e?.response?.data?.message ||
+            e?.message ||
+            "전시 목록을 불러오지 못했습니다."
+        );
       } finally {
         setLoading(false);
       }
@@ -93,22 +100,33 @@ export function MyExhibitionsPage() {
           <span className="loading loading-spinner loading-lg" />
         </div>
       ) : error ? (
-        <div className="alert alert-error"><span>{error}</span></div>
+        <div className="alert alert-error">
+          <span>{error}</span>
+        </div>
       ) : list.length === 0 ? (
         <div className="text-center py-20">
           <p className="opacity-70">아직 등록된 전시가 없습니다.</p>
-          <Link to="/exhibitions/create" className="btn btn-primary btn-sm mt-4">
+          <Link
+            to="/exhibitions/create"
+            className="btn btn-primary btn-sm mt-4"
+          >
             전시 만들기
           </Link>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {list.map((ex) => (
-            <Link key={ex.id} to={`/exhibitions/${ex.id}`} className="card bg-base-100 shadow hover:shadow-md transition">
+            <Link
+              key={ex.id}
+              to={`/exhibitions/${ex.id}`}
+              className="card bg-base-100 shadow hover:shadow-md transition"
+            >
               <div className="card-body">
                 <h2 className="card-title truncate">{ex.title}</h2>
                 {ex.description ? (
-                  <p className="line-clamp-2 text-sm opacity-80">{ex.description}</p>
+                  <p className="line-clamp-2 text-sm opacity-80">
+                    {ex.description}
+                  </p>
                 ) : (
                   <p className="text-sm opacity-50">설명 없음</p>
                 )}
@@ -163,56 +181,70 @@ export function ExhibitionDetailPage(props: { id?: string | number }) {
       setError("");
       try {
         // 1) 전시 상세
-        const { data } = await axios.get<Exhibition>(`${API_BASE}/exhibitions/${id}`, {
-          headers: authHeaders(),
-        });
+        const { data } = await axios.get<Exhibition>(
+          `${API_BASE}/exhibitions/${id}`,
+          {
+            headers: authHeaders(),
+          }
+        );
         const normalized = { ...data, id: String(data.id) } as Exhibition;
         setEx(normalized);
 
         // 2) 작품 목록 채우기 (상세에 artworks 포함된 경우 우선 사용)
-// 실제 응답: artworks가 조인 행 배열이며, 각 행에 artwork 객체가 중첩됨
-//   {
-//     id, title, ..., artworks: [
-//       { id: joinId, artwork: { id, title, url, description, ... }, created_at, ... }, ...
-//     ]
-//   }
-const rows: any[] = Array.isArray(normalized.artworks) ? normalized.artworks : [];
-let embedded: Artwork[] = [];
-if (rows.length > 0) {
-  const isJoin = !!(rows[0] as any)?.artwork;
-  embedded = rows.map((row: any, i: number) => {
-    const src = isJoin ? row.artwork : row;
-    return {
-      id: String(src?.id ?? row?.artworkId ?? row?.id ?? i),
-      title: String(src?.title ?? ""),
-      url: String(src?.url ?? ""),
-      description: src?.description ?? null,
-      // position이 없다면 API 배열 순서를 보존하도록 i+1 사용
-      position: row?.position ?? src?.position ?? i + 1,
-    } as Artwork;
-  });
-}
+        // 실제 응답: artworks가 조인 행 배열이며, 각 행에 artwork 객체가 중첩됨
+        //   {
+        //     id, title, ..., artworks: [
+        //       { id: joinId, artwork: { id, title, url, description, ... }, created_at, ... }, ...
+        //     ]
+        //   }
+        const rows: any[] = Array.isArray(normalized.artworks)
+          ? normalized.artworks
+          : [];
+        let embedded: Artwork[] = [];
+        if (rows.length > 0) {
+          const isJoin = !!(rows[0] as any)?.artwork;
+          embedded = rows.map((row: any, i: number) => {
+            const src = isJoin ? row.artwork : row;
+            return {
+              id: String(src?.id ?? row?.artworkId ?? row?.id ?? i),
+              title: String(src?.title ?? ""),
+              url: String(src?.url ?? ""),
+              description: src?.description ?? null,
+              // position이 없다면 API 배열 순서를 보존하도록 i+1 사용
+              position: row?.position ?? src?.position ?? i + 1,
+            } as Artwork;
+          });
+        }
 
-if (embedded.length > 0) {
-  setArtworks(embedded);
-} else {
-  // 2-1) 조인 테이블에서 직접 가져오기 (예시 스펙)
-  // 기대 응답 예: [{ exhibitionId, artwork: {...}, position }]
-  const rel = await axios.get<any[]>(
-    `${API_BASE}/exhibition-artwork?exhibitionId=${encodeURIComponent(id)}`,
-    { headers: authHeaders() }
-  );
-  const mapped: Artwork[] = (rel.data ?? []).map((row: any, i: number) => ({
-    id: String(row?.artwork?.id ?? row?.artworkId ?? row?.id ?? i),
-    title: row?.artwork?.title ?? row?.title ?? "",
-    url: row?.artwork?.url ?? row?.url ?? "",
-    description: row?.artwork?.description ?? row?.description ?? null,
-    position: row?.position ?? i + 1,
-  }));
-  setArtworks(mapped);
-}
+        if (embedded.length > 0) {
+          setArtworks(embedded);
+        } else {
+          // 2-1) 조인 테이블에서 직접 가져오기 (예시 스펙)
+          // 기대 응답 예: [{ exhibitionId, artwork: {...}, position }]
+          const rel = await axios.get<any[]>(
+            `${API_BASE}/exhibition-artwork?exhibitionId=${encodeURIComponent(
+              id
+            )}`,
+            { headers: authHeaders() }
+          );
+          const mapped: Artwork[] = (rel.data ?? []).map(
+            (row: any, i: number) => ({
+              id: String(row?.artwork?.id ?? row?.artworkId ?? row?.id ?? i),
+              title: row?.artwork?.title ?? row?.title ?? "",
+              url: row?.artwork?.url ?? row?.url ?? "",
+              description:
+                row?.artwork?.description ?? row?.description ?? null,
+              position: row?.position ?? i + 1,
+            })
+          );
+          setArtworks(mapped);
+        }
       } catch (e: any) {
-        setError(e?.response?.data?.message || e?.message || "전시 정보를 불러오지 못했습니다.");
+        setError(
+          e?.response?.data?.message ||
+            e?.message ||
+            "전시 정보를 불러오지 못했습니다."
+        );
       } finally {
         setLoading(false);
       }
@@ -235,7 +267,9 @@ if (embedded.length > 0) {
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h1 className="text-2xl font-bold">{ex?.title ?? "전시관"}</h1>
-          <p className="opacity-80 max-w-3xl whitespace-pre-wrap">{ex?.description}</p>
+          <p className="opacity-80 max-w-3xl whitespace-pre-wrap">
+            {ex?.description}
+          </p>
           <div className="text-xs opacity-60 flex gap-4">
             {ex?.user?.email && <span>소유자: {ex.user.email}</span>}
             {ex?.created_at && <span>생성: {fmtDate(ex.created_at)}</span>}
@@ -243,10 +277,19 @@ if (embedded.length > 0) {
           </div>
         </div>
         <div className="flex gap-2">
-          <Link to="/exhibitions/my" className="btn btn-ghost btn-sm">목록</Link>
-          <button onClick={copyLink} className="btn btn-outline btn-sm">링크 복사</button>
+          <Link to="/exhibitions/my" className="btn btn-ghost btn-sm">
+            목록
+          </Link>
+          <button onClick={copyLink} className="btn btn-outline btn-sm">
+            링크 복사
+          </button>
           {/* 소유자일 때만 보이도록 조건 처리 권장 */}
-          <Link to={`/exhibitions/${id}/edit`} className="btn btn-primary btn-sm">편집</Link>
+          <Link
+            to={`/exhibitions/${id}/edit`}
+            className="btn btn-primary btn-sm"
+          >
+            편집
+          </Link>
         </div>
       </div>
 
@@ -257,11 +300,18 @@ if (embedded.length > 0) {
           ))}
         </div>
       ) : error ? (
-        <div className="alert alert-error"><span>{error}</span></div>
+        <div className="alert alert-error">
+          <span>{error}</span>
+        </div>
       ) : sorted.length === 0 ? (
         <div className="text-center py-16">
           <p className="opacity-70">아직 전시에 포함된 작품이 없습니다.</p>
-          <Link to={`/exhibitions/${id}/edit`} className="btn btn-primary btn-sm mt-4">작품 추가하기</Link>
+          <Link
+            to={`/exhibitions/${id}/edit`}
+            className="btn btn-primary btn-sm mt-4"
+          >
+            작품 추가하기
+          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -286,9 +336,13 @@ if (embedded.length > 0) {
                 />
               </figure>
               <div className="card-body p-3">
-                <div className="text-sm font-medium truncate">{idx + 1}. {a.title}</div>
+                <div className="text-sm font-medium truncate">
+                  {idx + 1}. {a.title}
+                </div>
                 {a.description ? (
-                  <div className="text-xs opacity-70 line-clamp-2">{a.description}</div>
+                  <div className="text-xs opacity-70 line-clamp-2">
+                    {a.description}
+                  </div>
                 ) : null}
               </div>
             </a>
