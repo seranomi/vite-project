@@ -34,7 +34,7 @@ export default function Navbar({ onDrawerToggle }: NavbarProps) {
 
       {/* 로고 및 타이틀 */}
       <div className="flex-1 text-xl font-bold">
-        <Link to="/">🏠 MyApp</Link>
+        <Link to="/">🏠 가상 전시관</Link>
       </div>
 
       {/* 링크 및 토글 - 데스크탑 전용 */}

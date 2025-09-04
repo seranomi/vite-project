@@ -5,7 +5,7 @@ import About from "@/pages/Exhibitions/index.tsx";
 import Signup from "@/pages/Signup";
 import Signin from "@/pages/Signin";
 import AuthLayout from "./layouts/AuthLayout";
-import ExhibitionCreatePage from "./pages/ArtworkCreatePase.tsx/index.tsx";
+import ExhibitionCreatePage from "./pages/ArtworkCreatePage.tsx/index.tsx";
 import MyArtwork from "./pages/MyArtwork/index.tsx";
 
 export default function App() {
