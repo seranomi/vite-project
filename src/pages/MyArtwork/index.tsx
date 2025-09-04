@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -50,13 +51,16 @@ export default function MyArtwork() {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">내 작품 목록</h1>
-          <button
+          {/* <button
             className="btn btn-outline btn-sm"
             onClick={fetchArtworks}
             disabled={loading}
           >
             {loading ? "불러오는 중..." : "새로고침"}
-          </button>
+          </button> */}
+          <Button>
+            작품 등록
+          </Button>
         </div>
 
         {/* 에러 메시지 */}
@@ -95,7 +99,7 @@ export default function MyArtwork() {
                       <img
                         src={a.url}
                         alt={a.title}
-                        className="h-full w-full object-cover"
+                        className="h-full object-cover"
                         loading="lazy"
                       />
                     </figure>
@@ -106,9 +110,6 @@ export default function MyArtwork() {
                           {a.description}
                         </p>
                       )}
-                      <div className="card-actions justify-end">
-                        <span className="btn btn-primary btn-sm">자세히 보기</span>
-                      </div>
                     </div>
                   </Link>
                 ))}
