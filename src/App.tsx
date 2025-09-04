@@ -8,6 +8,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import ArtworkCreatePage from "./pages/ArtworkCreatePage.tsx/index.tsx";
 import MyArtwork from "./pages/MyArtwork/index.tsx";
 import ExhibitionCreatePage from "./pages/ExhibitionCreatePage/index.tsx";
+import { ExhibitionDetailPage, MyExhibitionsPage } from "./pages/ExhibitionDetailPage.tsx/index.tsx";
 
 export default function App() {
   return (
@@ -18,7 +19,13 @@ export default function App() {
           <Route path="/exhibitions" index element={<About />} />
           <Route path="/my-artworks" index element={<MyArtwork />} />
           <Route path="/artworks/new" index element={<ArtworkCreatePage />} />
-          <Route path="/exhibitions/new" index element={<ExhibitionCreatePage />} />
+          <Route
+            path="/exhibitions/new"
+            index
+            element={<ExhibitionCreatePage />}
+          />
+          <Route path="/exhibitions/my" element={<MyExhibitionsPage />} />
+          <Route path="/exhibitions/:id" element={<ExhibitionDetailPage />} />
         </Route>
 
         <Route element={<AuthLayout />}>
