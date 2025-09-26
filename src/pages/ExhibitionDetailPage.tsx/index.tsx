@@ -32,7 +32,7 @@ export type Artwork = {
   title: string;
   url: string; // imageUrl/url 등 백엔드 필드명에 맞춰 조정
   description?: string | null;
-  position?: number; // 조인 테이블에서 순서 제공 시
+  position?: number; 
 };
 
 /**

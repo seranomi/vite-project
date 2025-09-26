@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 
 type Props = {
-  id: number;
+  id: number | string;
   title: string;
-  image: string;
+  url: string;
 };
 
-export default function ExhibitionCard({ id, title, image }: Props) {
+export type Artwork = {
+  id: number | string;
+  title: string;
+  url: string;
+  description?: string | null;
+};
+
+
+export default function ExhibitionCard({ id, title, url }: Props) {
   return (
     <div className="card bg-base-100 shadow-md hover:shadow-lg transition">
       <figure>
-        <img src={image} alt={title} className="h-40 w-full object-cover" />
+        <img src={url} alt={title} className="h-40 w-full object-cover" />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{title}</h2>
