@@ -87,7 +87,7 @@ export function MyExhibitionsPage() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto  px-4 py-8 animate-fade-in">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">내 전시관</h1>
         <Link to="/exhibitions/create" className="btn btn-primary btn-sm">

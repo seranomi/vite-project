@@ -1,6 +1,7 @@
 // src/pages/ExhibitionCreatePage.tsx
 import { useEffect, useMemo, useState, useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import placeholder from "@/assets/placeholder.jpg";
 
 type Artwork = {
@@ -138,6 +139,8 @@ export default function ExhibitionCreatePage() {
     });
   };
 
+  const navigate = useNavigate();
+
   // 저장(생성)
   const [saving, setSaving] = useState(false);
   const [errorSave, setErrorSave] = useState("");
@@ -197,7 +200,7 @@ export default function ExhibitionCreatePage() {
       }
 
       // 이동이 필요하면 created.id로 네비게이트
-      // navigate(`/exhibitions/${exhibitionId}`);
+      navigate(`/exhibitions/${exhibitionId}`);
     } catch (e: any) {
       setErrorSave(
         e?.response?.data?.message || e?.message || "전시 생성에 실패했습니다."
@@ -208,7 +211,7 @@ export default function ExhibitionCreatePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 py-8 animate-fade-in">
       <h1 className="text-2xl font-bold">전시관 등록</h1>
 
       {/* 전시 기본 정보 */}
@@ -448,7 +451,7 @@ export default function ExhibitionCreatePage() {
                 className={`card bg-base-100 shadow-sm border
                   ${
                     selectedIds.has(String(a.id))
-                      ? "border-primary"
+                      ? "ring-2 ring-primary ring-offset-2"
                       : "border-transparent"
                   }
                 `}

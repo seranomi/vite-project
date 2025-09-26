@@ -39,7 +39,7 @@ export default function ArtworkCreatePage() {
       });
       console.log("📤 전송 데이터:", form);
       console.log("✅ 서버 응답:", res.data);
-      navigate("/"); // 전시관 목록으로 이동
+      navigate("/my-artworks"); // 전시관 목록으로 이동
     } catch (error) {
       console.error("Error creating artwork:", error);
     }
@@ -49,7 +49,7 @@ export default function ArtworkCreatePage() {
 
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-6 animate-fade-in">
-      <h1 className="text-2xl font-bold">🖼 작품 등록</h1>
+      <h1 className="text-2xl font-bold">작품 등록</h1>
 
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>

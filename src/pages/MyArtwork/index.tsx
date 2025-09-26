@@ -46,9 +46,10 @@ export default function MyArtwork() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
   return (
     <div className="animate-fade-in">
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">내 작품 목록</h1>
           {/* <button
@@ -59,7 +60,9 @@ export default function MyArtwork() {
             {loading ? "불러오는 중..." : "새로고침"}
           </button> */}
           <Button>
-            작품 등록
+            <Link to="/artworks/new">
+              작품 등록
+            </Link>
           </Button>
         </div>
 
