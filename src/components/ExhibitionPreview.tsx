@@ -69,9 +69,8 @@ export default function ExhibitionPreview() {
   }, []);
 
   return (
-    <div className="px-15 bg-base-200 min-h-[40vh]">
+    <div className="pb-14 px-15 bg-base-200 min-h-[40vh]">
       <div>
-		
         <h2 className="text-2xl font-bold mb-4">전시 목록</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
           {list.map((item) => (
