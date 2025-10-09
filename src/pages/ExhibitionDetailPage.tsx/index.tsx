@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 /**
  * 환경 변수 / 공통
  */
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 const TOKEN_KEY = "accessToken"; // or "token" — 앱에서 실제 사용하는 키로 통일하세요
 
 const authHeaders = () => {

@@ -15,7 +15,7 @@ export default function MyArtwork() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const fetchArtworks = async () => {
     setLoading(true);

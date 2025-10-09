@@ -22,7 +22,7 @@ type CreateExhibitionRes = {
   user: { id: number; email: string };
 };
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 export default function ExhibitionCreatePage() {
   // 1) 전시 폼

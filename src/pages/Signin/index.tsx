@@ -6,11 +6,12 @@ export default function Signin() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/auth/login", {
+      const res = await axios.post(`${API_BASE}/auth/login`, {
         email,
         password,
       });

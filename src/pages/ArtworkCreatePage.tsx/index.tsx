@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function ArtworkCreatePage() {
   const navigate = useNavigate();
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -32,7 +34,7 @@ export default function ArtworkCreatePage() {
     }
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await axios.post("http://localhost:3000/artworks", formData, {
+      const res = await axios.post(`${API_BASE}/artworks`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
